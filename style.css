@@ -1,13 +1,73 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	background-color: #292524;
+	font-family: "Sono", sans-serif;
+	color: #f8fafc;
+	padding: 4%;
+}
+
+/* main layout */
+.header{
+	margin: 5%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.fact-form {
+	background-color: #44403c;
+	margin-bottom: 2%;
+	padding: 2% 4%;
+}
+
+.main{
+	display: grid;
+	grid-template-columns: 10% 1fr;
+	GAP: 1%;
+}
+
+.logo{
+	display: flex;
+	align-items: center;
+	gap:16px;
+}
+
 h1 {
 	font-size: 42px;
 	text-transform: uppercase;
-	text-align: center;
-
+	font-family: "Coiny", sans-serif;
+	padding-top: 0.5%;
 }
 
-p {
+.fact {
 	font-size: 24px;
 	line-height: 1.4;
-	font-family: sans-serif;
+	background-color: #44403c;
+	margin-bottom: 2%;
+	padding: 2% 4%;
+
+	display: flex;
+	align-items: center;
+
+	gap: 1%;
+}
+
+.tag {
+	text-transform: uppercase;
+	font-size: 14px;
+	font-family: "Coiny", sans-serif;
+	padding-top: 0.5%;
+}
+
+.vote-buttons {
+	margin: auto;
+}
+ul {
+	list-style-type: none;
 
 }
