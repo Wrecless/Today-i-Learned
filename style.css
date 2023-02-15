@@ -11,6 +11,10 @@ body{
 	padding: 2%;
 }
 
+.hidden {
+	display: none !important;
+}
+
 /* main layout */
 .container{
 	width: 100%;
@@ -24,18 +28,19 @@ body{
 	justify-content: space-between;
 }
 
-.fact-form {
-	background-color: #44403c;
-	margin-bottom: 2%;
-	padding: 2% 4%;
-}
-
 .main{
 	display: grid;
 	grid-template-columns: 200px 1fr;
 	GAP: 5%;
 }
 
+@media (max-width: 900px) {
+	.main{
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ELEMENTS */
 .logo{
 	display: flex;
 	align-items: center;
@@ -47,7 +52,7 @@ body{
 }
 
 h1 {
-	font-size: 42px;
+	font-size: 200%;
 	text-transform: uppercase;
 	font-family: "Coiny", sans-serif;
 	padding-top: 0.5%;
@@ -59,11 +64,21 @@ h1 {
 	background-color: #44403c;
 	margin-bottom: 2%;
 	padding: 2% 4%;
+	letter-spacing: -1px;
+	border-radius: 20px;
 
 	display: flex;
 	align-items: center;
 
 	gap: 1%;
+}
+
+@media (max-width: 1200px) {
+	.fact {
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 12px;
+	}
 }
 
 .tag {
@@ -82,8 +97,6 @@ h1 {
 
 	display: flex;
 	gap: 8px;
-
-
 }
 
 .vote-buttons button {
@@ -93,7 +106,7 @@ h1 {
 	font-family: inherit;
 	font-weight: 600;
 	color: inherit;
-	padding: 5% 10%;
+	padding: 1% 8px;
 	border-radius: 100px;
 	cursor: pointer;
 	transition: 0.3s ease-in-out;
@@ -130,7 +143,7 @@ ul {
 	line-height: 1.4;
 	text-transform: uppercase;
 	font-size: 17px;
-	padding: 1% 1% 1%;
+	padding: 3% 3% 3%;
 	background-image: linear-gradient(135deg,
 	#0473e0,
 	#e80b0b,
@@ -138,7 +151,7 @@ ul {
 	#10e709,
 	#f6c409);
 	color:inherit;
-	border-radius: 20px;
+	border-radius: 16px;
 	cursor: pointer;
 	transition: 0.3s ease-in-out;
 }
@@ -148,11 +161,13 @@ ul {
 }
 
 .btn-large {
+	margin-top: 2%;
 	font-size: 20px;
-	padding: 20px 32px 17px;
+	padding: 1%
 }
 
 .btn-all-categories {
+	margin-top: 5%;
 	margin-bottom: 5%;
 	width: 100%;
 }
@@ -162,9 +177,21 @@ ul {
 	width: 100%;
 	background-image: none;
 }
+/* FORM */
+.fact-form {
+	background-color: #44403c;
+	margin-bottom: 2%;
+	padding: 2% 4%;
+	display: flex;
+	align-items: center;
+	gap: 1%;
+	border-radius: 20px;
+}
 
 .fact-form input,
 .fact-form select {
+	margin-top: 1%;
+	width: 220px;
 	background-color: #78716c;
 	border: none;
 	border-radius: 100px;
@@ -178,9 +205,28 @@ ul {
 	color: #ded5cf;
 }
 
+.fact-form input:first-child {
+	flex-grow: 1;
+}
+
 .fact-form span {
 	font-weight: 600;
 	font-size: 18px;
 	margin-right: 18px;
+}
+
+@media (max-width: 1000px) {
+	body {
+		padding: 32px 48px;
+	}
+
+	.fact-form {
+		flex-direction: column;
+		align-items: stretch;
+	}
+	.fact-form input,
+	.fact-form select {
+		width: auto;
+	}
 }
 
