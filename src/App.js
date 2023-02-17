@@ -49,6 +49,7 @@ function Counter() {
 }
 
 function App() {
+  const [showForm, setShowForm] = useState(false);
   const appTitle = "Today I learned";
   return (
     <>
@@ -59,11 +60,15 @@ function App() {
           <h1>{appTitle}</h1>
         </div>
 
-        <button className="btn btn-large btn-open">Share a fact</button>
+        <button
+          className="btn btn-large btn-open"
+          onClick={() => setShowForm((show) => !show)}
+        >
+          Share a fact
+        </button>
       </header>
 
-      <Counter />
-      <NewFactForm />
+      {showForm ? <NewFactForm /> : null}
 
       {/*MAIN*/}
       <main className="main">
