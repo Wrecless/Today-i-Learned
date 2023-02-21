@@ -35,52 +35,46 @@ const initialFacts = [
   },
 ];
 
-function Counter() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div>
-      <span style={{ fontSize: "40px" }}>{count}</span>
-      <button className="btn btn-large" onClick={() => setCount((c) => c + 1)}>
-        +1
-      </button>
-    </div>
-  );
-}
-
 function App() {
   const [showForm, setShowForm] = useState(false);
-  const appTitle = "Today I learned";
+  const [facts, setFacts] = useState(initialFacts);
+
   return (
     <>
-      {/*HEADER*/}
-      <header className="header">
-        <div className="logo">
-          <img src="logo.png" alt="Today i learned logo" />
-          <h1>{appTitle}</h1>
-        </div>
+      <Header showForm={showForm} setShowForm={setShowForm} />
 
-        <button
-          className="btn btn-large btn-open"
-          onClick={() => setShowForm((show) => !show)}
-        >
-          Share a fact
-        </button>
-      </header>
-
-      {showForm ? <NewFactForm /> : null}
+      {/*use state varible*/}
+      {showForm ? (
+        <NewFactForm setFacts={setFacts} setShowForm={setShowForm} />
+      ) : null}
 
       {/*MAIN*/}
       <main className="main">
         <CategoryFilter />
-        <FactList />
+        <FactList facts={facts} />
       </main>
     </>
   );
 }
 
-function NewFactForm() {
-  return <form className="fact-form">Fact form</form>;
+function Header({ showForm, setShowForm }) {
+  const appTitle = "Today I learned";
+
+  return (
+    <header className="header">
+      <div className="logo">
+        <img src="logo.png" alt="Today i learned logo" />
+        <h1>{appTitle}</h1>
+      </div>
+
+      <button
+        className="btn btn-large btn-open"
+        onClick={() => setShowForm((show) => !show)}
+      >
+        {showForm ? "Close" : "Share a fact"}
+      </button>
+    </header>
+  );
 }
 
 const CATEGORIES = [
@@ -93,6 +87,81 @@ const CATEGORIES = [
   { name: "history", color: "#f97316" },
   { name: "news", color: "#8b5cf6" },
 ];
+
+function isValidHttpUrl(string) {
+  let url;
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
+  }
+  return url.protocol === "http:" || url.protocol === "https:";
+}
+
+function NewFactForm({ setFacts, setShowForm }) {
+  const [text, setText] = useState("");
+  const [source, setSource] = useState("https://example.com");
+  const [category, setCategory] = useState("");
+  const textLength = text.length;
+
+  function handleSubmit(e) {
+    //prevent page reload
+    e.preventDefault();
+    //console.log(text, source, category);
+    //console.log("submitting form");
+
+    //check if data is valid
+    //if so send to server
+    if (text && isValidHttpUrl(source) && category && textLength <= 200);
+    //create a new fact object
+    const newFact = {
+      id: Math.random(Math.random() * 1000000),
+      text,
+      source,
+      category,
+      votesInteresting: 0,
+      votesMindblowing: 0,
+      votesFalse: 0,
+      createdIn: new Date().getCurrentYear(),
+    };
+    //add the new fact to the list of facts
+    setFacts((facts) => [newFact, ...facts]);
+
+    //reset the form
+    setText("");
+    setSource("");
+    setCategory("");
+
+    //close the form
+    setShowForm(false);
+  }
+  return (
+    <form className="fact-form" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Share a fact with the world"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+      <span>{200 - textLength}</span>
+      <input
+        value={source}
+        type="text"
+        placeholder="trustworthy source"
+        onChange={(e) => setSource(e.target.value)}
+      />
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <option value="">Choose category:</option>
+        {CATEGORIES.map((cat) => (
+          <option key={cat.name} value={cat.name}>
+            {cat.name.toUpperCase()}
+          </option>
+        ))}
+      </select>
+      <button class="btn btn-large">Submit</button>
+    </form>
+  );
+}
 
 function CategoryFilter() {
   return (
@@ -116,10 +185,7 @@ function CategoryFilter() {
   );
 }
 
-function FactList() {
-  //temporarily return the initial facts
-  const facts = initialFacts;
-
+function FactList({ facts }) {
   return (
     <section>
       <ul className="facts-list">
@@ -158,5 +224,4 @@ function Fact({ fact }) {
     </li>
   );
 }
-
 export default App;
