@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e49c80bf-77c5-4864-ba24-9f05dda442a2" name="Changes" comment="Starting React">
-      <change afterPath="$PROJECT_DIR$/src/App-Wrekals-Laptop.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +33,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/ninta/OneDrive/Today i Learned/src",
+    "last_opened_file_path": "C:/Users/ninta/Downloads/final-after-section-06",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -64,6 +64,7 @@
       <workItem from="1676568659865" duration="1862000" />
       <workItem from="1676620975254" duration="5906000" />
       <workItem from="1676996628085" duration="94000" />
+      <workItem from="1677149837639" duration="36000" />
     </task>
     <task id="LOCAL-00001" summary="Starting React">
       <created>1676570111476</created>
